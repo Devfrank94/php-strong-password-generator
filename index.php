@@ -1,3 +1,17 @@
+<?php 
+
+  /* la funzione generate_password() viene eseguita passando come parametro la lunghezza della password
+  specificata dall'utente. La funzione genera una password casuale utilizzando la funzione str_shuffle() di PHP
+  per mescolare i caratteri presenti nella stringa $chars. */
+  
+function generate_password($length){ 
+  $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?&%$<>^+-*/()[]{}@#_=";
+  // funzione substr serve per specificare che deve includere nella generazione della password dalla posizione 0 alla lunghezza massima della stringa passata $chars
+  return substr(str_shuffle($chars),0,$length); 
+} 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,14 +32,28 @@
     <main>
       <form action="index.php" method='GET'>
         <label for="password_length">Sicurezza password: </label>
+
+        <!-- Controllo interno della lunghezza dei caratteri al campo input -->
         <input type="number" name="password_length" id="password_length" min="8" max="30"
           placeholder="Ins. un numero da 8 a 30">
         <input type="submit" value="Genera Password" class="m-2 p-1 bg-primary rounded-2 text-white">
-      </form>
-
-
 
       </form>
+        <?php
+
+          /* serve a controllare se l'utente ha inserito un valore valido per il parametro richiesto (nel caso specifico, il parametro "numero"). 
+          Se il valore inserito non è valido, viene stampato un messaggio di errore */
+
+          if(isset($_GET['password_length'])){
+            $password_length= $_GET['password_length'];
+            if(isset($_GET['password_length']) && !empty($_GET['password_length'])) {
+            echo "Password generata: " .generate_password($password_length);
+            } else {
+            echo "<h4 class='text-danger'>Errore: il campo è vuoto!</h4>";
+            }
+          }
+
+        ?>
     </main>
   </div>
 </body>
