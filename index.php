@@ -13,11 +13,19 @@
 <body>
   <div class="wrapper container d-flex flex-column justify-content-center align-items-center">
     <header class="text-center pb-4">
-      <h1>Genera la tua password</h1>
-
+      <h1 class="text-success">Genera la tua password</h1>
     </header>
     <main>
+      <form action="index.php" method='GET'>
+        <label for="password_length">Sicurezza password: </label>
+        <input type="number" name="password_length" id="password_length" min="8" max="30"
+          placeholder="Ins. un numero da 8 a 30">
+        <input type="submit" value="Genera Password" class="m-2 p-1 bg-primary rounded-2 text-white">
+      </form>
 
+
+
+      </form>
     </main>
   </div>
 </body>
