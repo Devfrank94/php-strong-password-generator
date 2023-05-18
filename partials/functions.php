@@ -6,8 +6,8 @@
   
 function generate_password($length){ 
   $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?&%$<>^+-*/()[]{}@#_=";
-  // funzione substr serve per specificare che deve includere nella generazione della password dalla posizione 0 alla lunghezza massima della stringa passata $chars
-  return substr(str_shuffle($chars),0,$length); 
+  // funzione substr serve per specificare che deve sottrarre dalla generazione della password, dalla posizione 0 alla lunghezza selezionata.
+  return substr(str_shuffle($chars),0,$length);
 } 
 
 ?>
